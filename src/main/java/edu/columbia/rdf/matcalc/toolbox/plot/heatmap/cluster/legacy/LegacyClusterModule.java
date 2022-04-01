@@ -25,7 +25,6 @@ import org.jebtk.math.cluster.Cluster;
 import org.jebtk.math.cluster.DistanceMatrix;
 import org.jebtk.math.cluster.DistanceMetric;
 import org.jebtk.math.cluster.HierarchicalClustering;
-import org.jebtk.math.cluster.Linkage;
 import org.jebtk.math.matrix.DataFrame;
 import org.jebtk.math.matrix.Matrix;
 import org.jebtk.modern.dialog.ModernDialogStatus;
@@ -40,6 +39,7 @@ import edu.columbia.rdf.matcalc.toolbox.Module;
 import edu.columbia.rdf.matcalc.toolbox.plot.heatmap.ClusterProps;
 import edu.columbia.rdf.matcalc.toolbox.plot.heatmap.cluster.HierarchicalClusteringDialog;
 import edu.columbia.rdf.matcalc.toolbox.plot.heatmap.legacy.LegacyHeatMapModule;
+import org.jebtk.math.cluster.ILinkage;
 
 /**
  * Legacy cluster module using older heatmap module.
@@ -129,7 +129,7 @@ public class LegacyClusterModule extends Module implements ModernClickListener {
 
     DistanceMetric distanceMetric = dialog.getDistanceMetric();
 
-    Linkage linkage = dialog.getLinkage();
+    ILinkage linkage = dialog.getLinkage();
 
     props.set("plot.heatmap.visible", dialog.getShowHeatMap());
 
@@ -149,7 +149,7 @@ public class LegacyClusterModule extends Module implements ModernClickListener {
    * @param Props            the properties
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public void cluster(DataFrame m, DistanceMetric distanceMetric, Linkage linkage, boolean clusterRows,
+  public void cluster(DataFrame m, DistanceMetric distanceMetric, ILinkage linkage, boolean clusterRows,
       boolean clusterColumns, boolean optimalLeafOrder, Props properties) throws IOException {
 
     cluster(mWindow, m, distanceMetric, linkage, clusterRows, clusterColumns, optimalLeafOrder, properties);
@@ -234,7 +234,7 @@ public class LegacyClusterModule extends Module implements ModernClickListener {
    * @return the annotation matrix
    * @throws IOException Signals that an I/O exception has occurred.
    */
-  public static DataFrame cluster(MainMatCalcWindow window, DataFrame m, DistanceMetric distanceMetric, Linkage linkage,
+  public static DataFrame cluster(MainMatCalcWindow window, DataFrame m, DistanceMetric distanceMetric, ILinkage linkage,
       boolean clusterRows, boolean clusterColumns, boolean optimalLeafOrder, Props properties) throws IOException {
 
     if (m == null) {

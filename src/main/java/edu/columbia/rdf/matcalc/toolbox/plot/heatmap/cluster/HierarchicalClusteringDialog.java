@@ -20,7 +20,6 @@ import javax.swing.Box;
 import org.jebtk.math.cluster.AverageLinkage;
 import org.jebtk.math.cluster.CompleteLinkage;
 import org.jebtk.math.cluster.DistanceMetric;
-import org.jebtk.math.cluster.Linkage;
 import org.jebtk.math.cluster.SingleLinkage;
 import org.jebtk.modern.UI;
 import org.jebtk.modern.button.CheckBox;
@@ -34,6 +33,7 @@ import org.jebtk.modern.window.ModernWindow;
 import org.jebtk.modern.window.WindowWidgetFocusEvents;
 
 import edu.columbia.rdf.matcalc.figure.PlotConstants;
+import org.jebtk.math.cluster.ILinkage;
 
 /**
  * The class HierarchicalClusteringDialog.
@@ -147,9 +147,9 @@ public class HierarchicalClusteringDialog extends ModernDialogHelpWindow impleme
    *
    * @return the linkage
    */
-  public Linkage getLinkage() {
+  public ILinkage getLinkage() {
 
-    Linkage linkage;
+    ILinkage linkage;
 
     switch (mLinkageCombo.getSelectedIndex()) {
     case 1:

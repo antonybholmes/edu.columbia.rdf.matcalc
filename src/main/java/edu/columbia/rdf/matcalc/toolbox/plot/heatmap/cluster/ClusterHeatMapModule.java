@@ -21,7 +21,6 @@ import org.jebtk.graphplot.figure.SubFigure;
 import org.jebtk.math.cluster.Cluster;
 import org.jebtk.math.cluster.DistanceMetric;
 import org.jebtk.math.cluster.HierarchicalClustering;
-import org.jebtk.math.cluster.Linkage;
 import org.jebtk.math.matrix.DataFrame;
 import org.jebtk.modern.AssetService;
 import org.jebtk.modern.dialog.ModernDialogStatus;
@@ -33,6 +32,7 @@ import edu.columbia.rdf.matcalc.MainMatCalcWindow;
 import edu.columbia.rdf.matcalc.figure.graph2d.Graph2dWindow;
 import edu.columbia.rdf.matcalc.icons.Cluster32VectorIcon;
 import edu.columbia.rdf.matcalc.toolbox.Module;
+import org.jebtk.math.cluster.ILinkage;
 
 /**
  * The class ClusterHeatMapModule.
@@ -87,7 +87,7 @@ public class ClusterHeatMapModule extends Module implements ModernClickListener 
 
     DistanceMetric distanceMetric = dialog.getDistanceMetric();
 
-    Linkage linkage = dialog.getLinkage();
+    ILinkage linkage = dialog.getLinkage();
 
     DataFrame m = mParent.getCurrentMatrix();
 
@@ -107,7 +107,7 @@ public class ClusterHeatMapModule extends Module implements ModernClickListener 
    * @param optimalLeafOrder the optimal leaf order
    * @param showHeatmap      the show heatmap
    */
-  public void cluster(DataFrame m, DistanceMetric distanceMetric, Linkage linkage, boolean clusterRows,
+  public void cluster(DataFrame m, DistanceMetric distanceMetric, ILinkage linkage, boolean clusterRows,
       boolean clusterColumns, boolean optimalLeafOrder, boolean showHeatmap) {
 
     if (m == null) {
